@@ -23,7 +23,7 @@ Start the environment:
 
 Launch the MySQL CLI:
 
-`docker exec -it mysql2 bach -c 'mysql -u $MYSQL_USER -p $MYSQL_PASSWORD demo'`
+`docker exec -it mysql bash -c 'mysql -u root -p$MYSQL_ROOT_PASSWORD'`
 
 ## ****Part 01 - Ingest the data (plus any new changes) into Kafka :****
 
