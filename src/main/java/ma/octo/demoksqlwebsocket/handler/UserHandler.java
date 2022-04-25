@@ -1,5 +1,6 @@
 package ma.octo.demoksqlwebsocket.handler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import ma.octo.demoksqlwebsocket.ksqldb.ReactorClient;
 import ma.octo.demoksqlwebsocket.vo.UserVo;
@@ -10,6 +11,8 @@ import org.springframework.web.reactive.socket.WebSocketSession;
 import reactor.core.publisher.Mono;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
@@ -24,12 +27,23 @@ public class UserHandler implements WebSocketHandler {
             try {
                 String name = row.getString("NAME");
                 Integer id = row.getInteger("ID");
-                UserVo user = new UserVo(id, name);
-                return user.toString();
+                ObjectMapper objectMapper = new ObjectMapper();
+                Map<String, String> data = new HashMap<>();
+                data.put("id", String.valueOf(id));
+                data.put("name", name);
+                return objectMapper.writeValueAsString(data);
             } catch (Exception e) {
                 System.out.printf("error name, %s", e.getMessage());
             }
             return "";
-        }).map(session::textMessage)).and(session.receive().map(WebSocketMessage::getPayloadAsText).log());
+        }).map(row -> {
+            try {
+                System.out.println("row : " + row);
+                return session.textMessage(row.toString());
+            } catch (Exception e) {
+                System.out.printf("error name, %s", e.getMessage());
+            }
+            return null;
+        })).and(session.receive().map(WebSocketMessage::getPayloadAsText).log());
     }
 }
