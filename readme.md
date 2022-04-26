@@ -82,8 +82,10 @@ SELECT * FROM USERS EMIT CHANGES LIMIT 5;
 ```
 
 
-
-
+** Get number of row in a stream or table **
+```
+ksql> SELECT COUNT(*) as user_count FROM users GROUP BY 1 EMIT CHANGES;
+```
 
 
 

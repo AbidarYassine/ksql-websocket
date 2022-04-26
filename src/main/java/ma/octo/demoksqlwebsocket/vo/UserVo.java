@@ -2,8 +2,6 @@ package ma.octo.demoksqlwebsocket.vo;
 
 import lombok.*;
 
-import java.math.BigInteger;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
