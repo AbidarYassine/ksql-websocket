@@ -47,6 +47,72 @@ CREATE SOURCE CONNECTOR SOURCE_MYSQL WITH (
 );
 ```
 
+
+## ****Postgres Connector :****
+
+```jsx
+CREATE SOURCE CONNECTOR SOURCE_PGS WITH (
+    'connector.class' = 'io.debezium.connector.postgresql.PostgresConnector',
+    'database.hostname' = '172.31.0.2',
+    'database.port' = '5432',
+    'database.user' = 'duyodev',
+    'database.dbname' = 'duyo',
+    'database.password' = 'duyodev2021',
+    'schema.whitelist' = 'duyo.campaigns,duyo.users,duyo.comments',
+    'database.history.kafka.bootstrap.servers' = 'kafka:29092',
+    'database.history.kafka.topic' = 'dbhistory.duyo' ,
+    'include.schema.changes' = 'false',
+    'transforms'= 'unwrap,extractkey',
+    'key.converter'= 'org.apache.kafka.connect.storage.StringConverter',
+    'value.converter'= 'io.confluent.connect.avro.AvroConverter',
+    'value.converter.schema.registry.url'= 'http://schema-registry:8081'
+);
+```
+
+
+{
+"name": "inventory-connector",
+"config": {
+"connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+"tasks.max": "1",
+"database.hostname": "0.0.0.0",
+"database.port": "5433",
+"database.user": "duyodev",
+"database.password": "duyodev",
+"database.dbname" : "duyo",
+"database.server.name": "dbserver1",
+"schema.whitelist": "duyo.campaigns,duyo.users,duyo.comments",
+}
+}
+[//]: # ({)
+
+[//]: # ("name": "inventory-connector",)
+
+[//]: # ("config": {)
+
+[//]: # ("connector.class": "io.debezium.connector.postgresql.PostgresConnector",)
+
+[//]: # ("tasks.max": "1",)
+
+[//]: # ("database.hostname": "0.0.0.0",)
+
+[//]: # ("database.port": "5432",)
+
+[//]: # ("database.user": "postgres",)
+
+[//]: # ("database.password": "postgres",)
+
+[//]: # ("database.dbname" : "postgres",)
+
+[//]: # ("database.server.name": "dbserver1",)
+
+[//]: # ("schema.whitelist": "inventory")
+
+[//]: # (})
+
+[//]: # (})
+
+
 **Check if the connector is created successfuly with :**
 
 `ksql> SHOW CONNECTORS;`

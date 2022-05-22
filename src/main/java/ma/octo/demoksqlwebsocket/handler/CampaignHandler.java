@@ -1,7 +1,7 @@
 package ma.octo.demoksqlwebsocket.handler;
 
 import lombok.RequiredArgsConstructor;
-import ma.octo.demoksqlwebsocket.ksqldb.ReactorClient;
+import ma.octo.demoksqlwebsocket.aggregator.core.ReactorClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;

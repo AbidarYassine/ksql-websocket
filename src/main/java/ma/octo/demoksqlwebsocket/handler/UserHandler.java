@@ -2,15 +2,13 @@ package ma.octo.demoksqlwebsocket.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import ma.octo.demoksqlwebsocket.ksqldb.ReactorClient;
-import ma.octo.demoksqlwebsocket.vo.UserVo;
+import ma.octo.demoksqlwebsocket.aggregator.core.ReactorClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import reactor.core.publisher.Mono;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 

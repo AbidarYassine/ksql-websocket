@@ -1,4 +1,4 @@
-package ma.octo.demoksqlwebsocket.ksqldb;
+package ma.octo.demoksqlwebsocket.aggregator.core;
 
 import io.confluent.ksql.api.client.*;
 import lombok.RequiredArgsConstructor;

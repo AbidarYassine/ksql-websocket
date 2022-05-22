@@ -1,9 +1,12 @@
 package ma.octo.demoksqlwebsocket.service.facade;
 
 
-import org.springframework.http.codec.ServerSentEvent;
-import reactor.core.publisher.Flux;
+import io.confluent.ksql.api.client.Row;
+import reactor.core.publisher.Mono;
 
-public interface UserAggregationService extends AbstractFacade  {
+import java.util.List;
+
+public interface UserAggregationService extends AbstractFacade {
+
 
 }
