@@ -29,9 +29,5 @@ public class UserController {
     return userAggregationService.all();
   }
 
-  @GetMapping("pull")
-  public Mono<List<String>> pull() {
-    return userAggregationService.pullQuery();
-  }
 
 }
