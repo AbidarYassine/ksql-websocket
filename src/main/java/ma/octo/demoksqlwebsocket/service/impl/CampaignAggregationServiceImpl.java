@@ -42,7 +42,7 @@ public class CampaignAggregationServiceImpl extends Aggregator implements Campai
   public Flux<ServerSentEvent<String>> getCampaignByStatus() {
     String sql = String.format(SharedPushQuery.ALL_RECORD, Tables.CAMPAIGNS_VIEW_STATUS);
     log.info("campaign by status, sql query: {}", sql);
-    return run(sql, SseEvents.CAMPAIGNS_EVENT, CampaignStatusVo.class);
+    return run(sql, SseEvents.CAMPAIGNS_STATUS_EVENT, CampaignStatusVo.class);
   }
 
 }

@@ -17,8 +17,8 @@ public class AggregatorUtils {
 
   private final ObjectMapper mapper;
 
-  public <T> String rowToString(Row row, Class<T> t) {
-    Field[] declaredFields = t.getDeclaredFields();
+  public <T> String rowToString(Row row, Class<T> clazz) {
+    Field[] declaredFields = clazz.getDeclaredFields();
     Map<String, Object> data = new HashMap<>();
     for (Field declaredField : declaredFields) {
       Object filed = row.getValue(declaredField.getName().toUpperCase());
